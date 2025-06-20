@@ -1,13 +1,14 @@
 import React from 'react'
 import Slider from "react-slick";
+import i1 from '../assets/1.jpg';
+import i2 from '../assets/2.jpg';
+import i3 from '../assets/3.jpg';
+import i4 from '../assets/4.jpg';
+import i5 from '../assets/5.jpg';
+import i6 from '../assets/6.jpg';
 
-const images = [
-    "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://unsplash.com/photos/a-person-holding-up-a-sign-that-says-i-get-the-deal-PTUKFSLjuUA",
-    "https://unsplash.com/photos/a-table-with-plates-of-food-and-a-cup-of-coffee-LHqrGYzCXyo",
-    "https://unsplash.com/photos/black-cordless-headphones-beside-closed-black-laptop-computer-and-smartphone-_aXa21cf7rY",
-    "https://unsplash.com/photos/assorted-color-alphabet-cube-toy-lot-H7SCRwU1aiM",
-];
+
+const images = [i1, i2, i3, i4, i5, i6]
 
 const ImageSlider = () => {
     const settings = {
@@ -17,15 +18,16 @@ const ImageSlider = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000, // Auto scroll every 3 seconds
-        pauseOnHover: true,
+        autoplaySpeed: 4000, // Auto scroll every 3 seconds
+        pauseOnHover: false,
     };
     return (
-        <div className="w-full absolute h-full  rounded-lg overflow-hidden shadow-lg">
+
+        <div className="w-full h-[300px] relative rounded-lg overflow-hidden shadow-lg my-3">
             <Slider {...settings}>
                 {images.map((img, index) => (
                     <div key={index}>
-                        <img src={img} alt={`Slide ${index + 1}`} className=" releative object-cover" />
+                        <img src={img} alt={`Slide ${index + 1}`} className="w-[85%] ml-auto  h-[350px] object-contain rounded-2xl " />
                     </div>
                 ))}
             </Slider>
