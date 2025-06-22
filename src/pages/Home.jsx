@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import Sidebar from './Sidebar'
+import Navbar from '../components/navBar/Navbar'
+import Sidebar from '../components/sideBar/Sidebar'
 import ImageSlider from '../components/ImageSlider'
 
 
@@ -10,7 +10,6 @@ const Home = () => {
             <div className=''>
                 <Navbar />
             </div>
-
             <div >
                 <ImageSlider />
             </div>

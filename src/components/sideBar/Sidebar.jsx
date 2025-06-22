@@ -1,30 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaHome, FaShoppingBag, FaCog, FaSignOutAlt } from "react-icons/fa";
 
 const Sidebar = () => {
-    return ( 
+    const linkStyle = ({ isActive }) =>
+        `flex items-center gap-2 transition-colors duration-100 ${isActive ? "text-blue-500 font-semibold" : "text-white hover:text-blue-400"
+        }`;
+
+    return (
         <div className="h-screen w-1/6 bg-gray-800 text-white p-5 fixed top-14 left-0 shadow-lg">
             <ul className="space-y-6 text-sm font-medium">
                 <li>
-                    <Link to="/" className="flex items-center gap-2 hover:text-blue-400">
+                    <NavLink to="/Home" className={linkStyle}>
                         <FaHome /> Home
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/orders" className="flex items-center gap-2 hover:text-blue-400">
+                    <NavLink to="/orders" className={linkStyle}>
                         <FaShoppingBag /> Orders
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/settings" className="flex items-center gap-2 hover:text-blue-400">
+                    <NavLink to="/settings" className={linkStyle}>
                         <FaCog /> Settings
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/logout" className="flex items-center gap-2 hover:text-blue-400">
+                    <NavLink to="/logout" className={linkStyle}>
                         <FaSignOutAlt /> Logout
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
         </div>
