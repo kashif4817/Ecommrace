@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import data from "../data/Users.json";
+// import data from "../data/Users.json";
+import data from "../../data/users.json";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, replace, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +16,8 @@ const Login = () => {
         formState: { errors },
     } = useForm({});
 
+    const { login } = useAuth();
+    const navigate = useNavigate();
     const onSubmit = (formData) => {
         const matchedUser = data.find(
             (user) =>
@@ -20,13 +25,17 @@ const Login = () => {
                 user.password === formData.password
         );
         if (matchedUser) {
+            login();
+            navigate('/home' ,{replace});
             toast.success("Login Successful!", {
                 autoClose: 2000,
             });
         } else {
+
             toast.error("Invalid email or password", {
                 autoClose: 2000,
             });
+        
         }
     };
 
