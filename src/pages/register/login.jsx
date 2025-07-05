@@ -124,13 +124,14 @@ const Login = () => {
                     <button
                         type="submit"
                         className="cursor-pointer w-full py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold transition"
+                        //  onClick={Login}
                     >
                         Sign In
                     </button>
                     <p className="text-center text-sm mt-4 text-gray-400">
                         Don't have an account?
                         <Link
-                            to='/SignUp'
+                            to='/Signup'
                             className="ml-1 text-blue-400 hover:underline" > SignUp </Link>
                     </p>
                 </form>

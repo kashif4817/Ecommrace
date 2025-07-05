@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const storedAuth = localStorage.getItem('isAuthenticated');
         if (storedAuth === 'true') {
-            setIsAuthenticated(true); // ✅ Correct usage
+            setIsAuthenticated(true);
         }
         setIsLoading(false)
     }, []);
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout, isLoading}}>
+        <AuthContext.Provider value={{ isAuthenticated, login, logout, isLoading }}>
             {children}
         </AuthContext.Provider>
     );

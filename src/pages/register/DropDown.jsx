@@ -1,49 +1,45 @@
-// src/components/Dropdown.jsx
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
+import { FaChevronDown, FaSignInAlt, FaUserPlus } from "react-icons/fa";
 
 const Dropdown = () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleDropdown = () => setIsOpen(prev => !prev);
-
     return (
-        <li className="relative text-white px-4 font-medium">
-            {/* Account Label with Arrow */}
-            <div
-                onClick={toggleDropdown}
-                className="flex items-center gap-1 cursor-pointer select-none hover:text-blue-400 transition"
-            >
+        <li className="relative group px-4 text-white font-medium">
+            {/* Account label */}
+            <div className="flex items-center gap-1 cursor-pointer select-none hover:text-blue-400 transition">
                 <span>Account</span>
-                <span
-                    className={`transform transition-transform duration-300 text-sm ${isOpen ? "rotate-180" : "rotate-0"
-                        }`}
-                >
-                    ▼
-                </span>
+                <FaChevronDown
+                    className="text-sm transition-transform duration-300 group-hover:rotate-180"
+                />
             </div>
 
-            {/* Dropdown Menu */}
-            {isOpen && (
-                <ul className="absolute left-0 mt-2 w-40 bg-white text-black rounded-xl shadow-xl py-2 z-20">
-                    <li className="px-4 py-2 hover:bg-gray-200 transition">
-                        <NavLink
-                            to="/Login"
-                            className={({ isActive }) =>
-                                isActive ? "text-blue-500 font-semibold" : "text-white hover:text-blue-400"}>
-                            Login
-                        </NavLink>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-200 transition">
-                        <NavLink
-                            to="/SignUp"
-                            className={({ isActive }) =>
-                                isActive ? "text-blue-500 font-semibold" : "text-white hover:text-blue-400"}>
-                            SignUp
-                        </NavLink>
-                    </li>
-                </ul>
-            )}
+            {/* Dropdown menu */}
+            <ul className="absolute top-full left-0 mt-1 w-44 bg-white text-black rounded-xl shadow-xl py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out pointer-events-auto">
+                <li className="px-4 py-2 hover:bg-gray-200 transition flex items-center gap-2">
+                    <FaSignInAlt className="text-blue-500" />
+                    <NavLink
+                        to="/login"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-blue-500 font-semibold"
+                                : "text-black hover:text-blue-500"
+                        }>
+                        Login
+                    </NavLink>
+                </li>
+                <li className="px-4 py-2 hover:bg-gray-200 transition flex items-center gap-2">
+                    <FaUserPlus className="text-blue-500" />
+                    <NavLink
+                        to="/signup"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-blue-500 font-semibold"
+                                : "text-black hover:text-blue-500"
+                        }>
+                        Sign Up
+                    </NavLink>
+                </li>
+            </ul>
         </li>
     );
 };
